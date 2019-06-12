@@ -1,0 +1,1 @@
+*This folder is intended to contain the scripts of the project shell basics*
