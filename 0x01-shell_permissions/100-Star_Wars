@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo telnel towel.blinkenlights.nl
+sudo telnet towel.blinkenlights.nl
