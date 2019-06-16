@@ -1,2 +1,2 @@
 #!/bin/bash
-su betty
+cat iacta | head -n 3 | tail -n 1
