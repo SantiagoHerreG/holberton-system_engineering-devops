@@ -1,2 +1,2 @@
 #!/bin/bash
-su betty
+grep -A 3 "root" /etc/passwd
