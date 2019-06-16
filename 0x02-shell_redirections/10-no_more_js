@@ -1,2 +1,2 @@
 #!/bin/bash
-su betty
+find ./ -name *.js -type f -print | xargs /bin/rm -f
