@@ -1,2 +1,2 @@
 #!/bin/bash
-su betty
+grep -i "^[abcdefghijklmnñopqrstuvwxyz]" /etc/ssh/sshd_config
