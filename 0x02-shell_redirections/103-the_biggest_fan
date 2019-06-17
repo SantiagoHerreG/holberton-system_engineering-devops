@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(cut -d "	" -f 1,7 | sort -nrk2 | head -n 11 | cut -d "	" -f 1)
+cut -d "	" -f 1,6 | sort -nrk2 | head -n 11 | cut -d "	" -f 1
