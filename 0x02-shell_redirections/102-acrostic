@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -b 1 | fmt | tr -d " " | echo " "
+cut -b 1 | fmt | tr -d " " && echo " "
