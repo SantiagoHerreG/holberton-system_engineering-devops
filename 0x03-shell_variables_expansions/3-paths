@@ -1,2 +1,2 @@
 #!/bin/bash
-PATH=$PATH:~/action | export PATH
+echo ":$PATH" | LC_ALL=C tr -s '\0-\255' | grep --only-matching : | wc -l 
