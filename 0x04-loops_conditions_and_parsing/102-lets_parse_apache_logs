@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Parses an Apache log file using awk: prints user IP and Response_code
+
+awk '{ print $1 " " $9 } ' apache-access.log
