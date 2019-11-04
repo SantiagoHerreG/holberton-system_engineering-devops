@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# kills a running process
+# shellcheck disable=SC2009
+kill -9 "$(ps -u | grep ./4-to_infinity_and_beyond | head -n 1 | cut -d " " -f 4)"
