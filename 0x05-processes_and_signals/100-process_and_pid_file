@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# process and PID file
+sudo touch /var/run/holbertonscript.pid
+sudo chmod 777 /var/run/holbertonscript.pid
+echo "$$" > /var/run/holbertonscript.pid
+
+infinite=1
+trap sigterm_handler SIGTERM
+sigterm_handler ()
+{
+echo "I hate the kill command"
+sudo rm /var/run/holbertonscript.pid
+exit
+}
+
+trap sigquit_handler SIGQUIT
+sigquit_handler ()
+{
+sudo rm /var/run/holbertonscript.pid
+exit
+}
+
+trap sigint_handler SIGINT
+sigint_handler ()
+{
+echo "Y U no love me?!"
+}
+
+while [ $infinite ]; do
+	echo "To infinity and beyond"
+	sleep 2
+done
