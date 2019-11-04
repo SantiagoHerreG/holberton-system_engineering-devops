@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Infinite loop in bash with trap signal handler
+forever=1
+trap printing 15
+printing ()
+{
+echo "I am invincible!!!"
+}
+while [ $forever ]; do
+	echo "To infinity and beyond"
+	sleep 2
+done
