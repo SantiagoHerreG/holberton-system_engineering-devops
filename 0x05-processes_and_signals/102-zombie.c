@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <sys/wait.h>
-#include <sys/types.h>
 /**
  * infinite_while - infinite loop
  *
@@ -25,7 +23,7 @@ int infinite_while(void)
 
 int main(void)
 {
-	int my_pid1, my_pid2, my_pid3, my_pid4, my_pid5;
+	pid_t my_pid1, my_pid2, my_pid3, my_pid4, my_pid5;
 
 	my_pid1 = fork();
 	if (my_pid1)
