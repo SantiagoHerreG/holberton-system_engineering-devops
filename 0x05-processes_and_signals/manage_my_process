@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# daemon process controled by an init script
+sudo touch /tmp/my_process
+sudo chmod 777 /tmp/my_process
+
+echo "I am alive!" > /tmp/my_process
+infinite=1
+while [ $infinite ]; do
+	sleep 2
+	echo "I am alive!" >> /tmp/my_process
+done

@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Init script that manages a Daemon process
+
+case $1 in
+	start)
+		./manage_my_process &
+		sudo touch /var/run/my_process.pid && chmod 777 /var/run/my_process.pid
+		pgrep -nf "bash ./manage_my_process" > /var/run/my_process.pid
+		echo "manage_my_process started"
+		;;
+	stop)
+		kill -9 "$(cat /var/run/my_process.pid)"
+		rm /var/run/my_process.pid
+		echo "manage_my_process stopped"
+		;;
+	restart)
+		kill -9 "$(cat /var/run/my_process.pid)"
+		rm /var/run/my_process.pid
+		./manage_my_process &
+		sudo touch /var/run/my_process.pid && chmod 777 /var/run/my_process.pid
+		pgrep -nf "bash ./manage_my_process" > /var/run/my_process.pid
+		echo "manage_my_process restarted"
+		;;
+	*)
+		echo "Usage: manage_my_process {start|stop|restart}"
+		;;
+esac
