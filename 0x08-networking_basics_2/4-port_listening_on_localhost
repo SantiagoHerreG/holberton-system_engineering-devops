@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Uses nc for connecting a client to a server
+
+nc -l 98
