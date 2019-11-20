@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Displays the IPV4 IPs that are active
+
+ifconfig | grep "inet addr" | cut -d ":" -f 2 | cut -d " " -f 1
