@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Configures an ubuntu server to have nginx installed and listening in port 80, with returning a string on curl
+
+ssh ubuntu@34.74.191.132 sudo apt-get -y install nginx
+ssh ubuntu@34.74.191.132 sudo chown -R ubuntu:ubuntu /var/www/html
+ssh ubuntu@34.74.191.132 'echo "Holberton School" > /var/www/html/index.html'
