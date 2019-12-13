@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Configures an ubuntu server to have nginx installed and listening in port 80, with returning a string on curl
 
-sudo apt-get -y install nginx
-sudo chown -R ubuntu:ubuntu /var/www/html
+apt-get update
+apt-get -y install nginx
+chown -R 777 /var/www/html
 echo "Holberton School" > /var/www/html/index.html
-sudo systemctl start nginx
+service nginx reload
