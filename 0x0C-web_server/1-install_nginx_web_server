@@ -3,6 +3,8 @@
 
 apt-get update
 apt-get -y install nginx
+service nginx start
+mkdir -p /var/www/html
 chown -R 777 /var/www/html
 echo "Holberton School" > /var/www/html/index.html
 service nginx reload
