@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Configures an ubuntu server to have nginx installed and listening in port 80, with returning a string on curl
+# shellcheck disable=SC2154
+
+apt-get update
+apt-get -y install nginx
+service nginx start
+mkdir -p /var/www/html
+chown -R 777 /var/www/html
+echo "Holberton School" > /var/www/html/index.html
+new="\n\tlocation \/ {\n\t\tadd_header X-Served-By $(hostname) always;"
+sed -i "s/\n\tlocation \/ {/$new)/" /etc/nginx/sites-available/default
+service nginx reload
