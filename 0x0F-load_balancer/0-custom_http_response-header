@@ -8,6 +8,6 @@ service nginx start
 mkdir -p /var/www/html
 chown -R 777 /var/www/html
 echo "Holberton School" > /var/www/html/index.html
-new="\tlocation \/ {\n\t\tadd_header X-Served-By \$hostname always;"
-sed -i "s/^\tlocation \/ {/$new/" /etc/nginx/sites-available/default
+new="server {\n\tadd_header X-Served-By \$hostname always;"
+sed -i "s/^server {/$new/" /etc/nginx/sites-available/default
 service nginx restart
