@@ -6,6 +6,6 @@ add-apt-repository -y ppa:vbernat/haproxy-1.8
 apt-get update
 apt-get -y install haproxy=1.8.\*
 echo ENABLED=1 >> /etc/default/haproxy
-printf 'backend http_back\n\tbalance roundrobin\n\tmode http\n\tserver 888-web-01 34.74.191.132:80 check\n\tserver 888-web-02 34.74.231.8:80 check\n' >> /etc/haproxy/haproxy.cfg
 printf 'frontend http\n\tbind *:80\n\tmode http\n\tdefault_backend http_back\n' >> /etc/haproxy/haproxy.cfg
-service haproxy start
+printf 'backend http_back\n\tbalance roundrobin\n\tmode http\n\tserver web1 34.74.191.132:80\n\tserver web2 34.74.231.8:80\n' >> /etc/haproxy/haproxy.cfg
+service haproxy restart
