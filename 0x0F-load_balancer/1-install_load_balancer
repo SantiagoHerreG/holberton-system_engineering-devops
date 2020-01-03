@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 # Configures an ubuntu server to have nginx installed and listening in port 80, with returning a string on curl
 
-apt-get -y install software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-1.8
 apt-get update
 apt-get -y install haproxy=1.8.\*
 echo ENABLED=1 >> /etc/default/haproxy
