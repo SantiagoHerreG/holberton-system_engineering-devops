@@ -7,5 +7,5 @@ apt-get update
 apt-get -y install haproxy=1.8.\*
 echo ENABLED=1 >> /etc/default/haproxy
 printf 'frontend http\n\tbind *:80\n\tmode http\n\tdefault_backend http_back\n' >> /etc/haproxy/haproxy.cfg
-printf 'backend http_back\n\tbalance roundrobin\n\tmode http\n\tserver 888-web-1 888-web-1.holbertonschool-sherre.tech:80 check\n\tserver 888-web-2 888-web-2.holbertonschool-sherre.tech:80 check\n' >> /etc/haproxy/haproxy.cfg
+printf 'backend http_back\n\tbalance roundrobin\n\tmode http\n\tserver 888-web-1 34.74.191.132:80 check\n\tserver 888-web-2 34.74.231.8:80 check\n' >> /etc/haproxy/haproxy.cfg
 service haproxy restart
