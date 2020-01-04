@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Debugging of a web server not running on curl 0:80
-
-sed "s/^\tlisten [::]:80.*/\tlisten [::]:80 default_server;/" /etc/nginx/sites-available/default
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
