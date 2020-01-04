@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Debugging of a web server not running on curl 0:80
+sed -i "s/ ipv6only=on;/;/g" /etc/nginx/sites-available/default
 rm /etc/nginx/sites-enabled/default
 ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
