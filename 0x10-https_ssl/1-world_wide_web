@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+#Bash script that will display information about subdomains.
+# shellcheck disable=SC2086
+
+display_func()
+{
+	dig "$2.$1" | grep -A1 "ANSWER SECTION" | tail -n 1 | awk -v subdom="$2" '{ print "The subdomain " subdom " is a " $4 " record and points to " $5 }'
+}
+
+display_func_domain()
+{
+	for var in "www" "lb-01" "web-01" "web-02"; do
+		dig "$var.$1" | grep -A1 "ANSWER SECTION" | tail -n 1 | awk -v subdom="$var" '{ print "The subdomain " subdom " is a " $4 " record and points to " $5 }'
+	done
+}
+
+domain="$1"
+if [ ! -z "$2" ]; then
+	subdomain="$2"
+	display_func "$domain" "$subdomain"
+else
+	display_func_domain "$domain"
+
+fi
