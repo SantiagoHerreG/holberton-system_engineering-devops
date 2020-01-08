@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Runs nginx as the less privileged nginx user
 echo "nginx ALL=/etc/init.d/nginx start" >> /etc/sudoers
+chmod 777  /etc/nginx/nginx.conf
 echo "error_log /tmp/error.log;
 pid /tmp/nginx.pid;
 worker_processes 4;
