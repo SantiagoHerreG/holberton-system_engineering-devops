@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Runs nginx as the less privileged nginx user
+echo "nginx ALL=/etc/init.d/nginx start" >> /etc/sudoers
+chmod 777  /etc/nginx/nginx.conf
+printf "error_log /tmp/error.log;\npid /tmp/nginx.pid;\nworker_processes 4;\nevents {\n\tworker_connections 1024;\n}\nhttp {\n\tclient_body_temp_path /tmp/client_body;\n\tfastcgi_temp_path /tmp/fastcgi_temp;\n\tproxy_temp_path /tmp/proxy_temp;\n\tscgi_temp_path /tmp/scgi_temp;\n\tuwsgi_temp_path /tmp/uwsgi_temp;\n\ttcp_nopush on;\n\ttcp_nodelay on;\n\tkeepalive_timeout 65;\n\ttypes_hash_max_size 2048;\n\n\n\tinclude /etc/nginx/mime.types;\n\tindex index.html index.htm index.php;\n\n\tdefault_type application/octet-stream;\n\nserver {\n\tlisten 8080;\n\tlisten [::]:8080 default ipv6only=on;\n\nroot /var/www;\n\n\n\taccess_log /tmp/access.log;\n\terror_log /tmp/error.log;\n\n\n\tlocation / {\n\t\ttry_files $uri $uri/ /index.html;\n\t}\n\t}\n}\n" > /etc/nginx/nginx.conf
+pkill apache2
+su nginx -c "/usr/sbin/nginx"
