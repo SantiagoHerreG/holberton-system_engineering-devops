@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Configures an ubuntu server to have nginx installed and listening in port 80, with returning a string on curl
-
-apt-get update
-apt-get -y install haproxy=1.8.\*
-printf 'frontend http\n\tbind *:80\n\tmode http\n\tdefault_backend http_back\n' >> /etc/haproxy/haproxy.cfg
-printf 'backend http_back\n\tbalance roundrobin\n\tmode http\n\tserver 888-web-01 34.74.191.132:80 check\n\tserver 888-web-02 34.74.231.8:80 check\n' >> /etc/haproxy/haproxy.cfg
-service haproxy restart
+sudo apt-get -y install software-properties-common
+sudo add-apt-repository -y ppa:vbernat/haproxy-1.8
+sudo apt-get update
+sudo apt-get -y install haproxy=1.8.\*
+sudo printf 'frontend http\n\tbind *:80\n\tmode http\n\tdefault_backend http_back\n' >> /etc/haproxy/haproxy.cfg
+sudo printf 'backend http_back\n\tbalance roundrobin\n\tmode http\n\tserver 888-web-01 34.74.191.132:80 check\n\tserver 888-web-02 34.74.231.8:80 check\n' >> /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
