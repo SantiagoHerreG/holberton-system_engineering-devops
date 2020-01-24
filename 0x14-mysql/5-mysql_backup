@@ -1,0 +1,5 @@
+
+# This script makes a back up of all databases from mysql, using root user
+
+mysqldump --all-databases --user=root --password="$1" --result-file=backup.sql
+tar -czf "$(date '+%d-%m-%Y')".tar.gz backup.sql
