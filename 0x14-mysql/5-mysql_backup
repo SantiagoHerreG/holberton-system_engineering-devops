@@ -1,4 +1,4 @@
-
+#!/usr/bin/env bash
 # This script makes a back up of all databases from mysql, using root user
 
 mysqldump --all-databases --user=root --password="$1" --result-file=backup.sql
