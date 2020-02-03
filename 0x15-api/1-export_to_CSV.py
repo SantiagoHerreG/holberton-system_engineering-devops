@@ -21,5 +21,5 @@ todos?userId={}".format(param))
             string += "\"{}\",\"{}\",\"{}\",\"{}\"\n\
 ".format(user.json().get("id"), user.json().get("username"),
          to_do.get("completed"), to_do.get("title"))
-        with open("{}.csv".format(param), encoding="UTF", mode="w") as f:
+        with open("{}.csv".format(param), mode="w") as f:
             f.write(string)
