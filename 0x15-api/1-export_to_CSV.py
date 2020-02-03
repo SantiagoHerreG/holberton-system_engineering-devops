@@ -15,11 +15,11 @@ todos?userId={}".format(param))
     user = requests.get("http://jsonplaceholder.typicode.com\
 /users/{}".format(param))
 
-    name = user.json().get("username")
-    if name:
+    if len(user.json()) and len(todos.json()):
         string = ""
         for to_do in todos.json():
             string += "\"{}\",\"{}\",\"{}\",\"{}\"\n\
-".format(param, name, to_do.get("completed"), to_do.get("title"))
+".format(user.json().get("id"), user.json().get("username"),
+         to_do.get("completed"), to_do.get("title"))
         with open("{}.csv".format(param), encoding="UTF", mode="w") as f:
             f.write(string)
