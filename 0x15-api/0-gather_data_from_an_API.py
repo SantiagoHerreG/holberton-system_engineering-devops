@@ -28,4 +28,4 @@ todos?userId={}".format(param))
         print("Employee {} is done with tasks({}/{}):\
 ".format(user.json().get("name"), completed, total))
         for task in comp_list:
-            print("\t{}".format(task))
+            print("\t {}".format(task))
