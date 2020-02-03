@@ -15,7 +15,7 @@ todos?userId={}".format(param))
     user = requests.get("http://jsonplaceholder.typicode.com\
 /users/{}".format(param))
 
-    if len(todos.json()) and len(user.json()):
+    if len(user.json()):
         total = 0
         completed = 0
         comp_list = []
