@@ -15,7 +15,7 @@ todos?userId={}".format(param))
     user = requests.get("http://jsonplaceholder.typicode.com\
 /users/{}".format(param))
 
-    name = user.json().get("name")
+    name = user.json().get("username")
     if name:
         string = ""
         for to_do in todos.json():
