@@ -23,7 +23,8 @@ todos?userId={}".format(param))
             if flag:
                 string += ", "
             string += "{{\"username\": \"{}\", \"task\": \"{}\", \"completed\"\
-: {}}}".format(name, to_do.get("title"), to_do.get("completed"))
+: {}}}".format(name, to_do.get("title"), "true" if to_do.get("complete\
+d") is True else "false")
             flag = 1
         string += "]}"
         with open("{}.json".format(param), mode="w") as f:
