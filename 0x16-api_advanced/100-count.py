@@ -20,28 +20,29 @@ def count_words(subreddit, word_list, list_res=[]):
     else:
         res = requests.get("https://www.reddit.com/r/" + subreddit,
                            headers=headers, allow_redirects=False)
-
-    if res.json().get("data").get("children") is not None:
-        for value in res.json().get("data").get("children"):
-            title = value.get("data").get("title")
-            for j in range(len(word_list)):
-                i = 0
-                while i >= 0:
-                    i = title.find(" " + word_list[j] + " ", i + 1)
-                    if i > 0:
-                        list_res[j] += 1
-        if res.json().get("data").get("after") is not None:
-            if flag:
-                subreddit = subreddit + "/hot.json?after=" +\
+    try:
+        if res.json().get("data").get("children") is not None:
+            for value in res.json().get("data").get("children"):
+                title = value.get("data").get("title")
+                for j in range(len(word_list)):
+                    i = 0
+                    while i >= 0:
+                        i = title.find(" " + word_list[j] + " ", i + 1)
+                        if i > 0:
+                            list_res[j] += 1
+            if res.json().get("data").get("after") is not None:
+                if flag:
+                    subreddit = subreddit + "/hot.json?after=" +\
                                  res.json().get("data").get("after")
+                else:
+                    subreddit = subreddit[:-9] +\
+                                 res.json().get("data").get("after")
+                return count_words(subreddit, word_list, list_res)
             else:
-                subreddit = subreddit[:-9] +\
-                                 res.json().get("data").get("after")
-            return count_words(subreddit, word_list, list_res)
-
-    for i in range(len(list_res)):
-        big = max(list_res)
-        idx = list_res.index(big)
-        print(word_list[idx] + ":" + " " + str(list_res[idx]))
-        list_res[idx] = -1
-    return
+                for i in range(len(list_res)):
+                    big = max(list_res)
+                    idx = list_res.index(big)
+                    print(word_list[idx] + ":" + " " + str(list_res[idx]))
+                    list_res[idx] = -1
+    except:
+        pass
